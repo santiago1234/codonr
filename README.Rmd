@@ -1,0 +1,38 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+# codonr
+
+The goal of codonr is to ...
+
+## Installation
+
+You can install the released version of codonr from [CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("codonr")
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
++ Count codon in dna sequences
+
+```{r count_codons}
+library(codonr)
+
+dna_seq <- "ATGACAGAGGGGGGACAGTTAATG"
+count_codons(dna_seq)
+```
