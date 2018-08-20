@@ -1,4 +1,6 @@
 Package: codonr
+URL: https://github.com/santiago1234/codonr
+BugReports: https://github.com/santiago1234/codonr/issues
 Type: Package
 Title: What the Package Does (Title Case)
 Version: 0.1.0
