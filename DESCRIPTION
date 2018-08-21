@@ -15,7 +15,9 @@ Imports:
     magrittr,
     purrr,
     tibble,
-    dplyr
+    dplyr,
+    tidyr,
+    parallel
 RoxygenNote: 6.1.0
 Suggests: 
     testthat

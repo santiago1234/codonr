@@ -18,10 +18,10 @@ The goal of codonr is to ...
 
 ## Installation
 
-You can install the released version of codonr from [CRAN](https://CRAN.R-project.org) with:
+You can install the released version of codonr from [GitHub](https://github.com/santiago1234/codonr) with:
 
 ``` r
-install.packages("codonr")
+devtools::install_github("santiago1234/codonr")
 ```
 
 ## Example
