@@ -16,6 +16,23 @@ test_that('correct number of counts', {
 })
 
 
+# test get_codons ---------------------------------------------------------
+
+context("get codons")
+
+test_that('expected output', {
+  codons <- get_codons()
+  expect_equal(length(codons), 64)
+  expect_equal(unique(length(codons)), 64)
+  expect_true("ATG" %in% codons)
+  ## no stop codons
+  codons <- get_codons(FALSE)
+  expect_equal(length(codons), 61)
+  expect_false("TAG" %in% codons)
+
+})
+
+
 context("codon composition")
 # test codon composition function -----------------------------------------
 
