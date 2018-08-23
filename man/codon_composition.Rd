@@ -4,7 +4,7 @@
 \alias{codon_composition}
 \title{Codon Composition of Sequences}
 \usage{
-codon_composition(orfs, orf_col, id_col, cores = 4)
+codon_composition(orfs, orf_col, id_col)
 }
 \arguments{
 \item{orfs}{tibble, data with cds sequences}
@@ -24,6 +24,6 @@ of sequences and x is the number of codons (x=61) it may contain more thant
 Codon Composition of Sequences
 }
 \examples{
-orf <- tibble(cds= c("ACGTTT", "TTTCCC"), id=c("s0","s1"))
+orf <- tibble::tibble(cds= c("ACGTTT", "TTTCCC"), id=c("s0","s1"))
 codon_composition(orf, orf_col = "cds", id_col = "id")
 }

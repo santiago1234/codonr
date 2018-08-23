@@ -36,6 +36,7 @@ count_codons <- function(seq) {
 #' get_codons()
 #' get_codons(include_stop=TRUE) # dont want stop codons
 get_codons <- function(include_stop=TRUE) {
+  nuc <- c("A", "C", "G", "T")
   codons <-
     expand.grid(nucs, nucs, nucs) %>%
     dplyr::mutate(codon = paste0(Var1, Var2, Var3)) %>%
