@@ -7,7 +7,7 @@
 #' @return character file path to fastq files
 get_files_for_sample <- function(sname, dir_to_files, sample_report) {
   sample_report %>%
-    dplyr::filter(SampleName == sname) %>%
+    dplyr::filter(SampleName %in% sname) %>%
     dplyr::pull(Output) %>%
     purrr::map_chr(function(x) file.path(dir_to_files, x))
 }
