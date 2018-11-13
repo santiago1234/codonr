@@ -54,7 +54,6 @@ get_codons <- function(include_stop=TRUE) {
 #' @param orfs tibble, data with cds sequences
 #' @param orf_col character, column name containing cds
 #' @param id_col character, column name with gene/name id
-#' @param cores integer, number of course to use
 #'
 #' @return tible n by x, codon counts for each sequence, n is the number
 #' of sequences and x is the number of codons (x=61) it may contain more thant

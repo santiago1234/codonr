@@ -12,8 +12,6 @@ codon_composition(orfs, orf_col, id_col)
 \item{orf_col}{character, column name containing cds}
 
 \item{id_col}{character, column name with gene/name id}
-
-\item{cores}{integer, number of course to use}
 }
 \value{
 tible n by x, codon counts for each sequence, n is the number

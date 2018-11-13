@@ -3,5 +3,4 @@
 export(codon_composition)
 export(count_codons)
 export(get_codons)
-export(get_fq_files_from_LIMS)
 importFrom(magrittr,"%>%")

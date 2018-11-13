@@ -1,15 +1,11 @@
 Package: codonr
-URL: https://github.com/santiago1234/codonr
-BugReports: https://github.com/santiago1234/codonr/issues
-Type: Package
-Title: R Utilities for the Bazzini lab
-Version: 0.1.0
-Author: person("Santiago", "Medina", email="santiagogmm@hotmail.com",
-  role = c("aut", "cre"))
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: MIT
-Encoding: UTF-8
+Title: What The Package Does (one line, title case required)
+Version: 0.1
+Authors@R: person("Santiago", "Medina", email = "smedina@stowers.org",
+                  role = c("aut", "cre"))
+Description: What the package does (one paragraph)
+Depends: R (>= 3.1.0)
+License: What license is it under?
 LazyData: true
 Imports:
     magrittr,
@@ -18,7 +14,8 @@ Imports:
     dplyr,
     tidyr,
     readr,
-    ShortRead
+    ShortRead,
+    stringr
 RoxygenNote: 6.1.0
 Suggests: 
     testthat
