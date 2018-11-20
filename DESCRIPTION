@@ -14,7 +14,6 @@ Imports:
     dplyr,
     tidyr,
     readr,
-    ShortRead,
     stringr
 RoxygenNote: 6.1.0
 Suggests: 

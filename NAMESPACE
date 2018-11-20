@@ -2,5 +2,7 @@
 
 export(codon_composition)
 export(count_codons)
+export(count_kmers)
 export(get_codons)
+importFrom(dplyr,"%>%")
 importFrom(magrittr,"%>%")

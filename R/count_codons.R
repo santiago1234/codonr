@@ -39,8 +39,8 @@ get_codons <- function(include_stop=TRUE) {
   nucs <- c("A", "C", "G", "T")
   codons <-
     expand.grid(nucs, nucs, nucs) %>%
-    dplyr::mutate(codon = paste0(Var1, Var2, Var3)) %>%
-    dplyr::pull(codon)
+    dplyr::mutate(codon = paste0(.data$Var1, .data$Var2, .data$Var3)) %>%
+    dplyr::pull(.data$codon)
 
   if (include_stop) return(codons)
   else {
@@ -80,7 +80,7 @@ codon_composition <- function(orfs, orf_col, id_col) {
           dplyr::mutate(id_col = x$id_col)
       }
     ) %>%
-    tidyr::spread(key = codon, value = n) %>%
+    tidyr::spread(key = .data$codon, value = .data$n) %>%
     dplyr::mutate_if(is.numeric, dplyr::funs(replace(., is.na(.), 0)))
 
   return(composition_tb)
