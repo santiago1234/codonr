@@ -14,7 +14,8 @@ Imports:
     dplyr,
     tidyr,
     readr,
-    stringr
+    stringr,
+    recipes
 RoxygenNote: 6.1.0
 Suggests: 
     testthat
