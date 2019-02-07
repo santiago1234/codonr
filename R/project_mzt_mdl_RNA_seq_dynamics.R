@@ -51,7 +51,11 @@ make_mdl_frame <- function(log2FCtimecourse_dp,
   if (.maternal) fc_tc <- dplyr::filter(fc_tc, .data$is_maternal)
   fc_tc <-
     fc_tc %>%
-    dplyr::filter(.data$time > minimum_time_point, .data$sample_condition == .sample_condition) %>%
+    dplyr::filter(
+      .data$time > minimum_time_point,
+      .data$sample_condition == .sample_condition,
+      !is.infinite(.data$log2FC) # some log2FC are infinite I will drop them
+    ) %>%
     dplyr::select(-.data$is_maternal, -.data$sample_condition)
 
   mdl_frame <- dplyr::left_join(
