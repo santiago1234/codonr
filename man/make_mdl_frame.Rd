@@ -2,7 +2,7 @@
 % Please edit documentation in R/project_mzt_mdl_RNA_seq_dynamics.R
 \name{make_mdl_frame}
 \alias{make_mdl_frame}
-\title{Title}
+\title{Make Model Frame}
 \usage{
 make_mdl_frame(log2FCtimecourse_dp, pls_optimality_dp, utrs_dp,
   kmers_to_keep, .sample_condition = "wt_ribo", .maternal = TRUE,
@@ -28,5 +28,5 @@ represents the number of times that a k-mer is present in the 3' UTR seqs}
 tibble model frame
 }
 \description{
-Title
+Make Model Frame
 }

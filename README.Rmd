@@ -36,3 +36,10 @@ library(codonr)
 dna_seq <- "ATGACAGAGGGGGGACAGTTAATG"
 count_codons(dna_seq)
 ```
+
+## Code Organization
+
+Project specific code
+
+the pattern `project_id.*.R` indicates that all the files are part of a
+specific code project.

@@ -1,7 +1,7 @@
 # functions to model mRNA-seq dynamics ------------------------------------
 # create model matrix
 
-#' Title
+#' Make Model Frame
 #'
 #' @param log2FCtimecourse_dp character to file path: data/19-02-05-FoldChangeData/data/log2FC_earlyVSlate_tidytimecourse.csv
 #' @param pls_optimality_dp character to file path: results/19-01-18-ObtainEstimateOfCodonOptimalityPLS/results_data/pls_components_fish_genes.csv
@@ -51,7 +51,7 @@ make_mdl_frame <- function(log2FCtimecourse_dp,
   if (.maternal) fc_tc <- dplyr::filter(fc_tc, .data$is_maternal)
   fc_tc <-
     fc_tc %>%
-    dplyr::filter(.data$time > -1, .data$sample_condition == .sample_condition) %>%
+    dplyr::filter(.data$time > minimum_time_point, .data$sample_condition == .sample_condition) %>%
     dplyr::select(-.data$is_maternal, -.data$sample_condition)
 
   mdl_frame <- dplyr::left_join(
@@ -59,7 +59,7 @@ make_mdl_frame <- function(log2FCtimecourse_dp,
     dplyr::inner_join(opt, utrs, by = "Gene_ID"),
     by = "Gene_ID"
   ) %>%
-    .[complete.cases(.), ]
+    .[stats::complete.cases(.), ]
 
   mdl_frame
 

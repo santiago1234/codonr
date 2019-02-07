@@ -37,3 +37,10 @@ count_codons(dna_seq)
 #> 6 GGG       1
 #> 7 TTA       1
 ```
+
+Code Organization
+-----------------
+
+Project specific code
+
+the pattern `project_id.*.R` indicates that all the files are part of a specific code project.
