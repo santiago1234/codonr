@@ -15,7 +15,8 @@ Imports:
     tidyr,
     readr,
     stringr,
-    recipes
+    recipes,
+    brms
 RoxygenNote: 6.1.0
 Suggests: 
     testthat

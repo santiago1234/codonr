@@ -11,6 +11,7 @@
 #' @param .sample_condition character any of aamanit2in_polya wt_polya wt_ribo
 #' @param .maternal logical, True only matenal genes, assume there is column is_maternal
 #' @param minimum_time_point numeric lowest time point used for modeling
+#' @param add_utr_len lgl, add the utr length (nucleotides) as a predictor, utr is log transformed
 #'
 #' @return tibble model frame
 #' @export
@@ -22,6 +23,7 @@ make_mdl_frame <- function(log2FCtimecourse_dp,
                            kmers_to_keep,
                            .sample_condition = "wt_ribo",
                            .maternal = TRUE,
+                           add_utr_len = FALSE,
                            minimum_time_point = -1) {
 
   purrr::map_lgl(
@@ -45,6 +47,8 @@ make_mdl_frame <- function(log2FCtimecourse_dp,
   for (kmer in kmers_to_keep) {
     utrs[, kmer] <- stringr::str_count(utrs$`3utr`, kmer)
   }
+  ## add utr len
+  if (add_utr_len) utrs$utr_len <- log(stringr::str_length(utrs$`3utr`) + 1)
 
   utrs <- dplyr::select(utrs, -`3utr`)
 

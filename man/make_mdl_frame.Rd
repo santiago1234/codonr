@@ -6,7 +6,7 @@
 \usage{
 make_mdl_frame(log2FCtimecourse_dp, pls_optimality_dp, utrs_dp,
   kmers_to_keep, .sample_condition = "wt_ribo", .maternal = TRUE,
-  minimum_time_point = -1)
+  add_utr_len = FALSE, minimum_time_point = -1)
 }
 \arguments{
 \item{log2FCtimecourse_dp}{character to file path: data/19-02-05-FoldChangeData/data/log2FC_earlyVSlate_tidytimecourse.csv}
@@ -21,6 +21,8 @@ represents the number of times that a k-mer is present in the 3' UTR seqs}
 \item{.sample_condition}{character any of aamanit2in_polya wt_polya wt_ribo}
 
 \item{.maternal}{logical, True only matenal genes, assume there is column is_maternal}
+
+\item{add_utr_len}{lgl, add the utr length (nucleotides) as a predictor, utr is log transformed}
 
 \item{minimum_time_point}{numeric lowest time point used for modeling}
 }
