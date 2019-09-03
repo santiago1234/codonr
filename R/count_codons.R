@@ -85,3 +85,29 @@ codon_composition <- function(orfs, orf_col, id_col) {
 
   return(composition_tb)
 }
+
+#' Optimality Counts bazzini embo 2016
+#'
+#'Counts the number and percentage of optimal, non-optimal and neutral
+#'codons accoring to bazzini et al 2016
+#'
+#' @param seq character, coding dna sequence
+#'
+#' @return tibble
+#' @export
+#' @importFrom magrittr %>%
+#' @examples
+#' optimality_counts("AAACCCTAT")
+optimality_counts <- function(seq) {
+  # returns a tible with the counts for each codon
+  # and a percentage
+  seq %>%
+    codonr::count_codons() %>%
+    dplyr::full_join(codonr::optimality_code_embo2016) %>%
+    tidyr::replace_na(list(n = 0)) %>%
+    dplyr::group_by(optimality) %>%
+    dplyr::summarise(n = sum(n)) %>%
+    dplyr::ungroup() %>%
+    dplyr::mutate(percent = n / sum(n))
+}
+
