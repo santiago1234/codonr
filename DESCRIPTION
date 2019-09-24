@@ -5,7 +5,7 @@ Authors@R: person("Santiago", "Medina", email = "smedina@stowers.org",
                   role = c("aut", "cre"))
 Description: What the package does (one paragraph)
 Depends: R (>= 3.1.0)
-License: MIT
+License: MIT + file LICENSE
 LazyData: true
 Imports:
     magrittr,
@@ -15,7 +15,8 @@ Imports:
     tidyr,
     readr,
     stringr,
-    recipes
+    recipes,
+    caret (>= 6.0.84)
 RoxygenNote: 6.1.0
 Suggests: 
     testthat
