@@ -15,8 +15,9 @@ Imports:
     tidyr,
     readr,
     stringr,
-    recipes,
-    caret (>= 6.0.84)
-RoxygenNote: 6.1.0
+    recipes (>= 0.1.7),
+    caret (>= 6.0.84),
+    Biostrings (>= 2.48.0)
+RoxygenNote: 6.1.1
 Suggests: 
     testthat

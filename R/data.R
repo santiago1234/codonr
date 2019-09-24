@@ -32,7 +32,7 @@
 #' @description Data used to evaluate mRNA stability predictor, this data set
 #' was splitted such that the same gene is not in the training and testing
 #' sets at the same time
-#' @format A data frame with 67775 rows and 7 variables:
+#' @format A data frame with 7576 rows and 7 variables:
 #' \describe{
 #'   \item{\code{gene_id}}{character ensembl gene id}
 #'   \item{\code{specie}}{character the specie}
