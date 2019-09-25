@@ -7,7 +7,7 @@
 prepare_train_and_test_sets()
 }
 \value{
-list with train and test data
+list with train and test data (X and y)
 }
 \description{
 Preprate train and test set for modeling

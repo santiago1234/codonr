@@ -4,21 +4,21 @@
 \alias{preprocessing}
 \title{Data preprocessing}
 \usage{
-preprocessing(train_set_prepared)
+preprocessing(X_train)
 }
 \arguments{
-\item{train_set_prepared}{training_set, the train_set output of \code{\link{prepare_train_and_test_sets}}}
+\item{X_train}{training_set predictors, the X_train output of \code{\link{prepare_train_and_test_sets}}}
 }
 \value{
 trained Data Recipe
 }
 \description{
-Preprocess the train_set data for trainin/testing  models
+Preprocess the predictors matrix X (train_set) data for trainin/testing  models
 The following preprocessing steps are implemented
 \enumerate{
   \item Impute the 3' UTR length with median
   \item Apply \href{https://www.ncbi.nlm.nih.gov/pubmed/16711760}{spatial sign} transformation to codon composition
   \item Normalize all numeric variables
-  \item Dummy transformation to catergorical variables: `cell_type`, `specie`, and `datatype`
+  \item Dummy transformation for catergorical variables: `cell_type`, `specie`, and `datatype`
 }
 }

@@ -47,30 +47,36 @@ initial_preproc_codon_composition <- function(data) {
 
 #' Preprate train and test set for modeling
 #'
-#' @return list with train and test data
+#' @return list with train and test data (X and y)
 #' @export
 #'
 #' @examples
 prepare_train_and_test_sets <- function() {
+
+  train_set = initial_preproc_codon_composition(train_set)
+  test_set = initial_preproc_codon_composition(test_set)
+
   list(
-    train_set = initial_preproc_codon_composition(train_set),
-    test_set = initial_preproc_codon_composition(test_set)
+    X_train = dplyr::select(train_set, -decay_rate),
+    X_test = dplyr::select(train_test, -decay_rate),
+    y_train = train_set$decay_rate,
+    y_test = train_set$decay_rate
   )
 }
 
 
 #' Data preprocessing
 #'
-#' Preprocess the train_set data for trainin/testing  models
+#' Preprocess the predictors matrix X (train_set) data for trainin/testing  models
 #' The following preprocessing steps are implemented
 #' \enumerate{
 #'   \item Impute the 3' UTR length with median
 #'   \item Apply \href{https://www.ncbi.nlm.nih.gov/pubmed/16711760}{spatial sign} transformation to codon composition
 #'   \item Normalize all numeric variables
-#'   \item Dummy transformation to catergorical variables: `cell_type`, `specie`, and `datatype`
+#'   \item Dummy transformation for catergorical variables: `cell_type`, `specie`, and `datatype`
 #' }
 #'
-#' @param train_set_prepared training_set, the train_set output of \code{\link{prepare_train_and_test_sets}}
+#' @param X_train training_set predictors, the X_train output of \code{\link{prepare_train_and_test_sets}}
 #'
 #' @return trained Data Recipe
 #' @export
@@ -79,18 +85,18 @@ prepare_train_and_test_sets <- function() {
 #' # first use the function \code{\link{prepare_train_and_test_sets}} to add the
 #' codon composition and 3' UTR length
 #' data_prepared <- prepare_train_and_test_sets()
-#' rcipe <- preprocessing(data_prepared$train_set)
+#' rcipe <- preprocessing(data_prepared$X_train)
 #' # apply the pre-processing to test_set
-#' recipes::bake(rcipe, data_prepared$test_set)
-preprocessing <- function(train_set_prepared) {
+#' recipes::bake(rcipe, data_prepared$X_test)
+preprocessing <- function(X_train) {
 
   rcipe <-
-    recipes::recipe(decay_rate ~ ., data = train_set_prepared) %>%
-    recipes::update_role(gene_id, new_role = "id variable") %>%
+    recipes::recipe(X_train) %>%
+    recipes::step_rm(gene_id) %>%
     recipes::step_medianimpute(utrlenlog) %>%
     recipes::step_spatialsign(dplyr::starts_with("c_")) %>%
-    recipes::step_normalize(recipes::all_numeric()) %>%
-    recipes::step_dummy(specie, cell_type, datatype, one_hot = FALSE)
+    recipes::step_dummy(specie, cell_type, datatype, one_hot = FALSE) %>%
+    recipes::step_normalize(recipes::all_numeric())
 
   # train the recipe with the training data
   recipes::prep(rcipe, training = train_set_prepared)
