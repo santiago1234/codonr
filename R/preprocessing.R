@@ -100,7 +100,7 @@ preprocessing <- function(X_train) {
     recipes::step_normalize(recipes::all_numeric())
 
   # train the recipe with the training data
-  recipes::prep(rcipe, training = train_set_prepared)
+  recipes::prep(rcipe, training = X_train)
 
 }
 
