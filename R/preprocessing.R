@@ -97,7 +97,8 @@ preprocessing <- function(X_train) {
     recipes::step_medianimpute(utrlenlog) %>%
     recipes::step_spatialsign(dplyr::starts_with("c_")) %>%
     recipes::step_dummy(specie, cell_type, datatype, one_hot = FALSE) %>%
-    recipes::step_normalize(recipes::all_numeric())
+    recipes::step_center(recipes::all_numeric()) %>%
+    recipes::step_scale(recipes::all_numeric())
 
   # train the recipe with the training data
   recipes::prep(rcipe, training = X_train)
