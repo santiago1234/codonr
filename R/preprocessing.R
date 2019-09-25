@@ -35,6 +35,7 @@ count_codons2 <- function(orf) {
 #'
 #' @examples
 initial_preproc_codon_composition <- function(data) {
+  message("couting codons ... ")
   data %>%
     dplyr::mutate(
       len_log10_coding = log10(nchar(coding)),
@@ -58,9 +59,9 @@ prepare_train_and_test_sets <- function() {
 
   list(
     X_train = dplyr::select(train_set, -decay_rate),
-    X_test = dplyr::select(train_test, -decay_rate),
+    X_test = dplyr::select(test_set, -decay_rate),
     y_train = train_set$decay_rate,
-    y_test = train_set$decay_rate
+    y_test = test_set$decay_rate
   )
 }
 
