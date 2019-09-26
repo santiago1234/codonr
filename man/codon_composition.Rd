@@ -22,6 +22,6 @@ of sequences and x is the number of codons (x=61) it may contain more thant
 Codon Composition of Sequences
 }
 \examples{
-orf <- tibble::tibble(cds= c("ACGTTT", "TTTCCC"), id=c("s0","s1"))
+orf <- tibble::tibble(cds = c("ACGTTT", "TTTCCC"), id = c("s0", "s1"))
 codon_composition(orf, orf_col = "cds", id_col = "id")
 }

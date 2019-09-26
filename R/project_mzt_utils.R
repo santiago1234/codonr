@@ -24,5 +24,4 @@ load_decay_aa_codon_composition_data <- function(cc_dp, decay_dp) {
     dplyr::inner_join(cc)
 
   return(decay)
-
 }

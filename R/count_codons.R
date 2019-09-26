@@ -6,8 +6,7 @@
 #' @export
 #' @importFrom magrittr %>%
 #' @examples
-#' count_codons('ACGGGG')
-#'
+#' count_codons("ACGGGG")
 count_codons <- function(seq) {
   if (nchar(seq) %% 3 != 0) {
     stop("sequence not a multiple of 3")
@@ -15,9 +14,9 @@ count_codons <- function(seq) {
   seq <- toupper(seq)
   seq.int(from = 1, to = nchar(seq) - 2, by = 3) %>%
     purrr::map_chr(function(x) substr(
-      seq,
-      x, x + 2
-    )) %>%
+        seq,
+        x, x + 2
+      )) %>%
     table() %>%
     tibble::as_tibble() %>%
     dplyr::rename_(codon = ".")
@@ -34,20 +33,20 @@ count_codons <- function(seq) {
 #'
 #' @examples
 #' get_codons()
-#' get_codons(include_stop=TRUE) # dont want stop codons
-get_codons <- function(include_stop=TRUE) {
+#' get_codons(include_stop = TRUE) # dont want stop codons
+get_codons <- function(include_stop = TRUE) {
   nucs <- c("A", "C", "G", "T")
   codons <-
     expand.grid(nucs, nucs, nucs) %>%
     dplyr::mutate(codon = paste0(.data$Var1, .data$Var2, .data$Var3)) %>%
     dplyr::pull(.data$codon)
 
-  if (include_stop) return(codons)
-  else {
+  if (include_stop) {
+    return(codons)
+  } else {
     codons <- codons[!codons %in% c("TAG", "TAA", "TGA")]
     return(codons)
   }
-
 }
 #' Codon Composition of Sequences
 #'
@@ -61,14 +60,14 @@ get_codons <- function(include_stop=TRUE) {
 #' @export
 #' @importFrom magrittr %>%
 #' @examples
-#' orf <- tibble::tibble(cds= c("ACGTTT", "TTTCCC"), id=c("s0","s1"))
+#' orf <- tibble::tibble(cds = c("ACGTTT", "TTTCCC"), id = c("s0", "s1"))
 #' codon_composition(orf, orf_col = "cds", id_col = "id")
 codon_composition <- function(orfs, orf_col, id_col) {
 
   # rename the columns for easy manipulation
   orfs <- dplyr::rename_(orfs, "cds_seq" = orf_col, "id_col" = id_col)
   n_ids <- length(unique(orfs$id_col))
-  if (n_ids != nrow(orfs)){
+  if (n_ids != nrow(orfs)) {
     stop("id_col should contain unique identifiers")
   }
   composition_tb <-
@@ -88,8 +87,8 @@ codon_composition <- function(orfs, orf_col, id_col) {
 
 #' Optimality Counts bazzini embo 2016
 #'
-#'Counts the number and percentage of optimal, non-optimal and neutral
-#'codons accoring to bazzini et al 2016
+#' Counts the number and percentage of optimal, non-optimal and neutral
+#' codons accoring to bazzini et al 2016
 #'
 #' @param seq character, coding dna sequence
 #'
@@ -110,4 +109,3 @@ optimality_counts <- function(seq) {
     dplyr::ungroup() %>%
     dplyr::mutate(percent = n / sum(n))
 }
-

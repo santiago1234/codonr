@@ -16,6 +16,5 @@ The frequency of the codons in \code{seq}
 Count codons in DNA sequence
 }
 \examples{
-count_codons('ACGGGG')
-
+count_codons("ACGGGG")
 }

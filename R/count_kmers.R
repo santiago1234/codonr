@@ -14,7 +14,7 @@ count_kmers <- function(sequence, k) {
     stop("sequence shorter than k")
   }
   seq(from = 1, to = nchar(sequence) - k + 1) %>%
-    purrr::map_chr(~substr(sequence, ., . + k - 1)) %>%
+    purrr::map_chr(~ substr(sequence, ., . + k - 1)) %>%
     table() %>%
     dplyr::as_tibble() %>%
     dplyr::rename_("kmer" = ".")

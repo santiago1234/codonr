@@ -17,5 +17,5 @@ Get the list of codons
 }
 \examples{
 get_codons()
-get_codons(include_stop=TRUE) # dont want stop codons
+get_codons(include_stop = TRUE) # dont want stop codons
 }

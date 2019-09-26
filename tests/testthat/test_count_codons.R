@@ -3,11 +3,11 @@ context("count codons")
 dna <- "ATGGCAAGGCCCAAAGTGTTTTTCGATCTGACCGCCGGCGGCAGTCCTGTTGGAAGGGTGGTAATGGAG"
 output <- count_codons(dna)
 
-test_that('number of counts equals number of codons', {
+test_that("number of counts equals number of codons", {
   expect_equal(sum(output$n), nchar(dna) / 3)
 })
 
-test_that('correct number of counts', {
+test_that("correct number of counts", {
   dna1 <- "ACGacgACGtttACG"
   outpu1 <- count_codons(dna1)
   expect_equal(dplyr::filter(outpu1, codon == "ACG")$n, 4)
@@ -20,7 +20,7 @@ test_that('correct number of counts', {
 
 context("get codons")
 
-test_that('expected output', {
+test_that("expected output", {
   codons <- get_codons()
   expect_equal(length(codons), 64)
   expect_equal(unique(length(codons)), 64)
@@ -29,7 +29,6 @@ test_that('expected output', {
   codons <- get_codons(FALSE)
   expect_equal(length(codons), 61)
   expect_false("TAG" %in% codons)
-
 })
 
 
@@ -40,31 +39,28 @@ context("codon composition")
 set.seed(10)
 n <- 100
 ## generate fake data set for testing
-Reduce(function(x, y) paste0(x, y), sample(c("A", "C", "G", "T"), n*3, replace = T))
+Reduce(function(x, y) paste0(x, y), sample(c("A", "C", "G", "T"), n * 3, replace = T))
 cds <- replicate(
   n,
   expr = Reduce(
     function(x, y) paste0(x, y),
-    sample(c("A", "C", "G", "T"), rpois(n = 1, lambda = 100)*3, replace = T)
-    )
+    sample(c("A", "C", "G", "T"), rpois(n = 1, lambda = 100) * 3, replace = T)
   )
+)
 ids <- paste0("id_", rnorm(100))
 data <- tibble::tibble(ids = ids, cds = cds)
 output <- codon_composition(data, id_col = "ids", orf_col = "cds")
 
-test_that('correct output', {
+test_that("correct output", {
   expect_equal(nrow(data), nrow(output))
   expect_false(any(duplicated(output$id_col)))
   expect_error(codon_composition(dplyr::bind_rows(data, data), , id_col = "ids", orf_col = "cds"))
   # total sum equal length
   result <-
-    tidyr::gather(output, key="codon", value="n", -id_col) %>%
+    tidyr::gather(output, key = "codon", value = "n", -id_col) %>%
     dplyr::group_by(id_col) %>%
     dplyr::summarise(total_codons = sum(n)) %>%
-    dplyr::inner_join(data, by=c("id_col" = "ids")) %>%
+    dplyr::inner_join(data, by = c("id_col" = "ids")) %>%
     dplyr::mutate(expected_codons = nchar(cds) / 3)
   expect_true(all(result$total_codons == result$expected_codons))
-
 })
-
-

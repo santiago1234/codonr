@@ -25,10 +25,9 @@ make_mdl_frame <- function(log2FCtimecourse_dp,
                            .maternal = TRUE,
                            add_utr_len = FALSE,
                            minimum_time_point = -1) {
-
   purrr::map_lgl(
     .x = c(pls_optimality_dp, utrs_dp, log2FCtimecourse_dp),
-    ~!file.exists(.)
+    ~ !file.exists(.)
   ) %>%
     any() %>%
     if (.) stop("supplied file(s) not found")
@@ -70,5 +69,4 @@ make_mdl_frame <- function(log2FCtimecourse_dp,
     .[stats::complete.cases(.), ]
 
   mdl_frame
-
 }
