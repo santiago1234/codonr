@@ -24,7 +24,18 @@ Imports:
     lars,
     MASS,
     stats,
-    elasticnet
+    elasticnet,
+    earth,
+    kernlab,
+    nnet,
+    Cubist,
+    gbm,
+    ipred,
+    party,
+    partykit,
+    randomForest,
+    rpart,
+    RWeka
 RoxygenNote: 6.1.1
 Suggests: 
     testthat

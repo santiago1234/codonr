@@ -22,6 +22,3 @@ for example the human data that contains profiles for different cell types
 and with differen techniques
 The group variable is the `gene_id``
 }
-\examples{
-cross_fold_validation()
-}

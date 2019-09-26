@@ -32,8 +32,6 @@ count_codons2 <- function(orf) {
 #'
 #' @return A tibble: 6 x 71
 #' @export
-#'
-#' @examples
 initial_preproc_codon_composition <- function(data) {
   message("couting codons ... ")
   data %>%
@@ -50,8 +48,6 @@ initial_preproc_codon_composition <- function(data) {
 #'
 #' @return list with train and test data (X and y)
 #' @export
-#'
-#' @examples
 prepare_train_and_test_sets <- function() {
   train_set <- initial_preproc_codon_composition(train_set)
   test_set <- initial_preproc_codon_composition(test_set)
@@ -80,8 +76,6 @@ prepare_train_and_test_sets <- function() {
 #'
 #' @return trained Data Recipe
 #' @export
-#'
-#' @examples
 preprocessing <- function(X_train) {
   rcipe <-
     recipes::recipe(X_train) %>%

@@ -2,13 +2,22 @@
 % Please edit documentation in R/tunning_training.R
 \name{tune_models}
 \alias{tune_models}
-\title{Train Machine Learning model to predict mRNA stability}
+\title{Train Machine Learning models to predict mRNA stability}
 \usage{
 tune_models(ncores = 32)
 }
 \arguments{
-\item{ncores}{}
+\item{ncores}{integer number of cores for parallel processing. set to the
+numbers of cores in your machine}
+}
+\value{
+list of trained models
 }
 \description{
-Train Machine Learning model to predict mRNA stability
+Evaluates a set of machine learning models, also perfoms hyperparameter tunning.
+I follow the same approach as in chapter 10 of Applied Predictive Modeling book.
+This function uses the \code{datos_preprocessed} training data for tunning,
+}
+\note{
+This function is computational expensive and it requires parallel processing
 }
