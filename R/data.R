@@ -44,3 +44,23 @@
 #' }
 #' @source \url{https://github.com/santiago1234/MZT-rna-stability/blob/master/results/19-04-30-PredictiveModelDecayAllSpecies/19-04-30-EDA/EDAanalysos.md}
 "test_set"
+
+#' @title Preprocessed train and test data
+#'
+#' @description The `train_set` and `test_set`` were preprocessed with the function \code{\link{preprocessing}}
+#'
+#' @format list
+#' \describe{
+#'   \item{\code{X_train}}{train predictors}
+#'   \item{\code{X_test}}{test predictors}
+#'   \item{\code{y_train}}{train response}
+#'   \item{\code{y_test}}{test response}
+#' }
+"datos_preprocessed"
+
+#' @title Preprocessing pipeline
+#'
+#' @description The trained data preprocessing recipe
+#'
+#' @format recipe
+"preprocessing_pipeline"

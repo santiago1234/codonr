@@ -17,7 +17,14 @@ Imports:
     stringr,
     recipes,
     caret,
-    Biostrings
+    Biostrings,
+    parallel,
+    doParallel,
+    pls,
+    lars,
+    MASS,
+    stats,
+    elasticnet
 RoxygenNote: 6.1.1
 Suggests: 
     testthat

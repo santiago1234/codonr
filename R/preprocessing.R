@@ -95,30 +95,3 @@ preprocessing <- function(X_train) {
   # train the recipe with the training data
   recipes::prep(rcipe, training = X_train)
 }
-
-
-#' Preprocess data
-#'
-#' This function applies the \code{\link{preprocessing}} pipeline to the training
-#' data and preprocess train and test
-#'
-#' @return list with the following objects
-#' \enumerate{
-#'   \item \code{X_train} preprocesed training predictors
-#'   \item \code{X_test} preprocesed testing predictors
-#'   \item \code{y_train} training response
-#'   \item \code{y_test} testing response
-#'   \item \code{preprocessing_pipeline} recipe processing pipeline
-#'
-#' }
-#' @export
-#'
-#' @examples
-preprocessed_data <- function() {
-  datos <- prepare_train_and_test_sets()
-  preprocessing_pipeline <- preprocessing(datos$X_train)
-
-  datos$X_train <- recipes::bake(preprocessing_pipeline, datos$X_train)
-  datos$X_test <- recipes::bake(preprocessing_pipeline, datos$X_test)
-  datos$preprocessing_pipeline <- preprocessing_pipeline
-}

@@ -17,8 +17,9 @@ This function generates the trainControl object to be passed to the
 caret train function.
 Here, I use grouped 10 fold cross validation, the motivation for this
 is that the same gene (gene_id) cannot be in both groups, train and test,
-at the same time. The same gene can appear multiple times, for example the human
-data that contains profiles for different cell types and with differen techniques
+at the same time. The same gene can appear multiple times in the data,
+for example the human data that contains profiles for different cell types
+and with differen techniques
 The group variable is the `gene_id``
 }
 \examples{
