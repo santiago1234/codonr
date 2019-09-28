@@ -84,12 +84,13 @@ tune_models <- function(ncores = 32) {
     metric = "Rsquared"
   )
 
+
   message("svm regression ...")
   set.seed(669)
   svmr_model <- caret::train(
     x = datos_preprocessed$X_train, y = datos_preprocessed$y_train,
-    method = "svmRadial",
-    tuneLength = 15,
+    method = "svmLinear",
+    tuneLength = 10,
     trControl = control_object,
     metric = "Rsquared"
   )
