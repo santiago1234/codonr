@@ -43,9 +43,9 @@ tune_models <- function(ncores = 32, output_dir_to_save_models = "results-traine
     file.exists(make_model_id_name(mdl_name))
   }
 
-  save_model <- function(mdl, mld_name) {
+  save_model <- function(mdl, mdl_name) {
     message(paste0("saving model to ", make_model_id_name(mdl_name), " ..."))
-    readr::write_rds(mld, make_model_id_name(mdl_name))
+    readr::write_rds(mdl, make_model_id_name(mdl_name))
   }
 
   # parallel processing for grid search
@@ -84,7 +84,7 @@ tune_models <- function(ncores = 32, output_dir_to_save_models = "results-traine
     save_model(pls_model, mdl_name)
   }
 
-  mld_name <- "enet"
+  mdl_name <- "enet"
   if (!has_model_been_trained(mdl_name)) {
     message("elastic net regression ...")
     set.seed(669)
