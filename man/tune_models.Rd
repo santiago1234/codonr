@@ -4,14 +4,17 @@
 \alias{tune_models}
 \title{Train Machine Learning models to predict mRNA stability}
 \usage{
-tune_models(ncores = 32)
+tune_models(ncores = 32,
+  output_dir_to_save_models = "results-trained-models")
 }
 \arguments{
 \item{ncores}{integer number of cores for parallel processing. set to the
 numbers of cores in your machine}
+
+\item{output_dir_to_save_models}{character: output directory to save trained models}
 }
 \value{
-list of trained models
+None, all the model if not trained will be saved to \code{output_dir_to_save_models}
 }
 \description{
 Evaluates a set of machine learning models, also perfoms hyperparameter tunning.
