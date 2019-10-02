@@ -153,20 +153,6 @@ tune_models <- function(ncores = 32, output_dir_to_save_models = "results-traine
     save_model(nnet_model, mdl_name)
   }
 
-  mdl_name <- "knn"
-  if (!has_model_been_trained(mdl_name)) {
-    message("k-nearest neighbors regression ...")
-    set.seed(669)
-    knn_model <- caret::train(
-      x = datos_preprocessed$X_train, y = datos_preprocessed$y_train,
-      method = "knn",
-      tuneGrid = base::data.frame(k = 1:20),
-      trControl = control_object,
-      metric = "Rsquared"
-    )
-    save_model(knn_model, mdl_name)
-  }
-
 
   mdl_name <- "rpart"
   if (!has_model_been_trained(mdl_name)) {
