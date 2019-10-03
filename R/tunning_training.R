@@ -183,19 +183,6 @@ tune_models <- function(ncores = 32, output_dir_to_save_models = "results-traine
     save_model(ctree_model, mdl_name)
   }
 
-  mdl_name <- "mtree"
-  if (!has_model_been_trained(mdl_name)) {
-    message("mtree  regression ...")
-    set.seed(669)
-    mt_model <- caret::train(
-      x = datos_preprocessed$X_train, y = datos_preprocessed$y_train,
-      method = "M5",
-      trControl = control_object,
-      metric = "Rsquared"
-    )
-    save_model(mt_model, mdl_name)
-  }
-
 
   mdl_name <- "random_forest"
   if (!has_model_been_trained(mdl_name)) {

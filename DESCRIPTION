@@ -34,8 +34,7 @@ Imports:
     party,
     partykit,
     randomForest,
-    rpart,
-    RWeka
+    rpart
 RoxygenNote: 6.1.1
 Suggests: 
     testthat
