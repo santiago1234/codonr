@@ -16,25 +16,13 @@ Imports:
     readr,
     stringr,
     recipes,
-    caret,
     Biostrings,
     parallel,
     doParallel,
     pls,
-    lars,
     MASS,
     stats,
-    elasticnet,
-    earth,
-    kernlab,
-    nnet,
-    Cubist,
-    gbm,
-    ipred,
-    party,
-    partykit,
-    randomForest,
-    rpart
+    elasticnet
 RoxygenNote: 6.1.1
 Suggests: 
     testthat

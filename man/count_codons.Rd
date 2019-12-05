@@ -13,7 +13,7 @@ count_codons(seq)
 The frequency of the codons in \code{seq}
 }
 \description{
-Count codons in DNA sequence
+Codon frequency in coding dna sequence
 }
 \examples{
 count_codons("ACGGGG")

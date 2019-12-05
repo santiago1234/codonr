@@ -1,5 +1,7 @@
 #' Count codons in DNA sequence
 #'
+#' Codon frequency in coding dna sequence
+#'
 #' @param seq A character.
 #'
 #' @return The frequency of the codons in \code{seq}
@@ -108,4 +110,53 @@ optimality_counts <- function(seq) {
     dplyr::summarise(n = sum(n)) %>%
     dplyr::ungroup() %>%
     dplyr::mutate(percent = n / sum(n))
+}
+
+
+#' Nucleotide distance
+#'
+#' How many nucleotides (characters) are different between the two strings?
+#'
+#' @param seq1 string dna sequence
+#' @param seq2 dna sequence to compare same length as seq1
+#'
+#' @return integer number of different characters
+#' @export
+#'
+#' @examples
+#' nucleotide_distance("AA", "AC")
+nucleotide_distance <- function(seq1, seq2) {
+  if (nchar(seq1) != nchar(seq2)) stop("both sequences must be same length")
+
+  seq1 <- stringr::str_to_upper(seq1)
+  seq2 <- stringr::str_to_upper(seq2)
+  sum(strsplit(seq1, split = "")[[1]] != strsplit(seq2, split = "")[[1]])
+}
+
+
+
+#' Codon distance
+#'
+#' @param seq1
+#' @param seq2
+#'
+#' @return integer number of different codons between the sequences
+#' @export
+#'
+#' @examples
+#' codon_distance("AAACCC", "ACCccc")
+codon_distance <- function(seq1, seq2) {
+  if (nchar(seq1) %% 3 != 0 | nchar(seq2) %% 3 != 0) {
+    stop("sequence not a multiple of 3")
+  }
+  if (nchar(seq1) != nchar(seq2)) {
+    stop("both sequences must be same length")
+  }
+
+  seq1 <- stringr::str_to_upper(seq1)
+  seq2 <- stringr::str_to_upper(seq2)
+
+  seq.int(from = 1, to = nchar(seq1) - 2, by = 3) %>%
+    purrr::map_lgl(function(x) substr(seq1, x, x + 2) != substr(seq2, x, x + 2)) %>%
+    sum()
 }
